@@ -23,8 +23,8 @@ namespace PostCode.Controllers
         [HttpGet]
         public JsonResult postCodeProperties(string postcode)
         {
-            if (Regex.IsMatch(postcode, "[A-Za-z][1-9] [1-9][A-Za-z]{2}"))
-            {
+            //if (Regex.IsMatch(postcode, "[A-Za-z][1-9] [1-9][A-Za-z]{2}"))
+            //{
                 HttpClient httpClient = new HttpClient();
                 string apiPath = _IConfiguration.GetValue<string>("ApiPath");
                 string authKey = _IConfiguration.GetValue<string>("apiAuthKey");
@@ -36,8 +36,8 @@ namespace PostCode.Controllers
                 var response = httpClient.GetAsync(apiPath).Result;
 
                 return new JsonResult(response.Content.ReadAsStringAsync().Result);
-            }
-            return new JsonResult("Postcode validation error");
+            //}
+           // return new JsonResult("Postcode validation error");
         }
     }
 }
